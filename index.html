@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rock, Paper, Scissors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <script>
+        function game() {
+            const gameLength = 5;   // 5 rounds
+
+            for (let i = 0; i < gameLength; i++) {
+                let playerSelection = getPlayerSelection();
+                let computerSelection = getComputerSelection();
+
+                console.log(playRound(playerSelection, computerSelection));
+            }
+        }
+
+        function getComputerSelection() {
+            let compChoice = Math.floor(Math.random() * Math.floor(3));       // '3' set in stone, R, P, S.
+
+            if (compChoice == 1) {
+                return "rock";
+            } else if (compChoice == 2) {
+                return "paper";
+            } else return "scissors";
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            // TODO: find a way to clean this horrific mess up
+            if (playerSelection == "rock" && computerSelection == "scissors") {
+                return "Player wins, rock smashes scissors!";
+            } else if (playerSelection == "rock" && computerSelection == "paper") {
+                return "Player loses, rock lost to paper.";
+            } else if (playerSelection == "paper" && computerSelection == "scissors") {
+                return "Player loses, paper lost to scissors.";
+            } else if (playerSelection == "paper" && computerSelection == "rock") {
+                return "Player wins, paper covers rock!";
+            }  else if (playerSelection == "scissors" && computerSelection == "paper") {
+                return "Player wins, scissors cut paper!";
+            } else if (playerSelection == "scissors" && computerSelection == "rock") {
+                return "Player loses, scissors lost to rock.";
+            } else return "It's a tie! Both chose " + playerSelection;
+        }
+
+        function getPlayerSelection() {
+            let playerChoice = prompt("Choose!");
+            return playerChoice.toLowerCase();
+        }
+    </script>
+
+</body>
+
+</html>
